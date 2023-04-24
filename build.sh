@@ -20,4 +20,4 @@ mkdir build && cd build
 $MAKE_CMD
 $MAKE_CMD DESTDIR=$PWD/destdir install
 cd destdir
-tar --zstd cf "$BUILD_ROOT/output/gcc-$SNAPSHOT.tar.zst" *
+tar cf "$BUILD_ROOT/output/gcc-$SNAPSHOT.tar.zst" --zstd -- *
