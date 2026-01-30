@@ -11,7 +11,18 @@ defaults:
 
 jobs:
   Build:
-    runs-on: ubuntu-22.04
+    strategy:
+      max-parallel: 15
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            gcc_arch: x86_64
+          - os: ubuntu-22.04-arm
+            gcc_arch: aarch64
+    runs-on: ${{ matrix.os }}
+    env:
+      GCC_ARCH: ${{ matrix.gcc_arch }}
     steps:
       - uses: actions/checkout@v3
 
