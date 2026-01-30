@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=15.1.0
+VERSION=15.2.0
 MAJOR=15
 MAKE_CMD="make -j$(nproc)"
 BUILD_ROOT=$PWD
