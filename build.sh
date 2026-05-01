@@ -5,12 +5,13 @@ set -e
 VERSION=16.1.0
 MAJOR=$(echo "$VERSION" | cut -d . -f 1)
 MAKE_CMD="make -j$(nproc)"
+MIRROR="https://ftp.mpi-inf.mpg.de/mirrors/gnu/mirror/gcc.gnu.org/pub/gcc"
 BUILD_ROOT=$PWD
 
 mkdir output
 
 sudo DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y build-essential flex bison zlib1g-dev libmpc-dev libmpfr-dev libgmp-dev g++
-curl -L "https://sourceware.org/pub/gcc/releases/gcc-$VERSION/gcc-$VERSION.tar.xz" | tar xJ
+curl -L "$MIRROR/releases/gcc-$VERSION/gcc-$VERSION.tar.xz" | tar xJ
 mkdir build && cd build
 "../gcc-$VERSION/configure" -v --enable-languages=c,c++ --enable-lto --prefix=/usr --with-gcc-major-version-only --program-suffix=-$MAJOR --program-prefix=$GCC_ARCH-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-multiarch --disable-werror --with-abi=m64 --with-tune=generic --build=$GCC_ARCH-linux-gnu --host=$GCC_ARCH-linux-gnu --target=$GCC_ARCH-linux-gnu --disable-multilib --enable-checking=no,assert
 
