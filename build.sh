@@ -2,8 +2,8 @@
 
 set -e
 
-VERSION=15.2.0
-MAJOR=15
+VERSION=16.1.0
+MAJOR=$(echo "$VERSION" | cut -d . -f 1)
 MAKE_CMD="make -j$(nproc)"
 BUILD_ROOT=$PWD
 
