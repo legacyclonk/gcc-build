@@ -33,4 +33,4 @@ mkdir build && cd build
 $MAKE_CMD
 $MAKE_CMD DESTDIR="$PWD/destdir" install
 cd destdir
-tar cf "$BUILD_ROOT/output/gcc-$VERSION.tar.zst" --zstd -- *
+tar cf "$BUILD_ROOT/output/gcc-$VERSION-$GCC_ARCH.tar.zst" --zstd -- *
