@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=16.1.0
+VERSION=16.2.0
 MAJOR=$(echo "$VERSION" | cut -d . -f 1)
 MAKE_CMD="make -j$(nproc)"
 MIRROR="https://ftp.mpi-inf.mpg.de/mirrors/gnu/mirror/gcc.gnu.org/pub/gcc"
